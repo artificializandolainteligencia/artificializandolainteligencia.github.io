@@ -30,7 +30,7 @@ latest_posts:
 
 Libro Artificializando la Inteligencia 
 
-Descarga el PDF de borrador desde esta [dirección](pdf/alai.pdf) .
+Descarga el PDF de borrador desde esta [dirección](assets/pdf/alai.pdf) .
 
 Se puede adquirir enviando un email a arti@editorial.com.ar o directamente desde [Amazon](https://www.amazon.com/s?k=artificializando+la+inteligencia).
 
