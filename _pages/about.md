@@ -9,9 +9,7 @@ profile:
   image: prof_pic.jpg
   image_circular: false # crops the image to make it circular
   more_info: >
-    <p>555 your office number</p>
-    <p>123 your address street</p>
-    <p>Your City, State 12345</p>
+    <p>ALaI</p>
 
 selected_papers: false # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
@@ -28,7 +26,7 @@ latest_posts:
 ---
 
 
-Libro Artificializando la Inteligencia 
+Este libro surgió durante la pandemia como un compendio de notas para el armado de una materia de grado de Ingeniería en Informática en el ITBA en Buenos Aires, Argentina.  Quedó como apuntes de la materia y le dimos una vuelta de rosca para armarlo como un libro de texto para Universidades Argentinas y de habla hispana, donde muchas veces falta este tipo de material.
 
 Descarga el PDF de borrador desde esta [dirección](assets/pdf/alai.pdf) .
 
