@@ -1,6 +1,6 @@
 ---
 layout: about
-title: about
+title: libro
 permalink: /
 subtitle: La búsqueda optimizada por artificializar la inteligencia
 
