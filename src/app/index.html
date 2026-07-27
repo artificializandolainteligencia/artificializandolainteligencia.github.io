@@ -1,0 +1,538 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0b0b0f" />
+    <meta name="color-scheme" content="dark" />
+    <title>Artificializando la Inteligencia</title>
+    <meta name="description" content="Un libro para comprender, implementar y pensar críticamente la inteligencia artificial moderna." />
+    <meta property="og:title" content="Artificializando la Inteligencia" />
+    <meta
+      property="og:description"
+      content="Un recorrido riguroso y cercano por los fundamentos, algoritmos y aplicaciones de la inteligencia artificial."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://artificializandolainteligencia.github.io/" />
+    <meta property="og:image" content="https://artificializandolainteligencia.github.io/assets/img/cover.png" />
+    <meta property="og:image:alt" content="Portada del libro Artificializando la Inteligencia" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="canonical" href="https://artificializandolainteligencia.github.io/" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.86em%22 font-size=%2290%22>⚛</text></svg>"
+    />
+    <link rel="stylesheet" href="assets/css/main.css" />
+  </head>
+  <body class="layout-landing">
+    <a class="skip-link" href="#main-content">Saltar al contenido</a>
+    <svg class="icon-sprite" aria-hidden="true">
+      <symbol id="icon-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" /></symbol>
+      <symbol id="icon-book" viewBox="0 0 24 24">
+        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V4H6.5A2.5 2.5 0 0 0 4 6.5v13Z" />
+        <path d="M8 7h8M8 11h6" />
+      </symbol>
+      <symbol id="icon-brain" viewBox="0 0 24 24">
+        <path
+          d="M9.5 4.5A3 3 0 0 0 5 7a3 3 0 0 0 .5 5.5A3.5 3.5 0 0 0 9 18h1V6a2 2 0 0 0-.5-1.5ZM14.5 4.5A3 3 0 0 1 19 7a3 3 0 0 1-.5 5.5A3.5 3.5 0 0 1 15 18h-1V6a2 2 0 0 1 .5-1.5Z"
+        />
+        <path d="M7 9h3M14 9h3M8 14h2M14 14h2" />
+      </symbol>
+      <symbol id="icon-layers" viewBox="0 0 24 24">
+        <path d="m12 3 9 5-9 5-9-5 9-5Z" />
+        <path d="m3 12 9 5 9-5M3 16l9 5 9-5" />
+      </symbol>
+      <symbol id="icon-scan" viewBox="0 0 24 24">
+        <path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2" />
+        <path d="M7 8h10M7 12h10M7 16h10" />
+      </symbol>
+      <symbol id="icon-workflow" viewBox="0 0 24 24">
+        <rect x="3" y="3" width="6" height="6" rx="1" />
+        <rect x="15" y="15" width="6" height="6" rx="1" />
+        <path d="M9 6h4a4 4 0 0 1 4 4v5M15 18h-4a4 4 0 0 1-4-4V9" />
+      </symbol>
+      <symbol id="icon-message" viewBox="0 0 24 24">
+        <path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v8Z" />
+        <path d="m8 9-2 2 2 2M16 9l2 2-2 2M13 7l-2 8" />
+      </symbol>
+      <symbol id="icon-database" viewBox="0 0 24 24">
+        <ellipse cx="12" cy="5" rx="8" ry="3" />
+        <path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 11v6c0 1.7 3.6 3 8 3 1.1 0 2.2-.1 3-.3" />
+        <path d="m18 15-2 3h3l-2 3" />
+      </symbol>
+      <symbol id="icon-bot" viewBox="0 0 24 24">
+        <rect x="4" y="8" width="16" height="12" rx="3" />
+        <path d="M12 4v4M8 13h.01M16 13h.01M9 17h6" />
+      </symbol>
+      <symbol id="icon-shield" viewBox="0 0 24 24">
+        <path d="M12 3 4 6v5c0 5 3.4 8.7 8 10 4.6-1.3 8-5 8-10V6l-8-3Z" />
+        <path d="m9 12 2 2 4-4" />
+      </symbol>
+      <symbol id="icon-game" viewBox="0 0 24 24">
+        <path d="M8 7h8a5 5 0 0 1 4.8 6.4l-1.2 4A2.2 2.2 0 0 1 16 18.5L14 17h-4l-2 1.5a2.2 2.2 0 0 1-3.6-1.1l-1.2-4A5 5 0 0 1 8 7Z" />
+        <path d="M7 12h4M9 10v4M16 11h.01M18 13h.01" />
+      </symbol>
+      <symbol id="icon-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6" /></symbol>
+      <symbol id="icon-code" viewBox="0 0 24 24"><path d="m8 9-3 3 3 3M16 9l3 3-3 3M14 5l-4 14" /></symbol>
+    </svg>
+
+    <header class="site-header" data-header>
+      <div class="shell site-header__inner">
+        <a class="brand" href="index.html" aria-label="Artificializando la Inteligencia, inicio">
+          <span class="brand__mark" aria-hidden="true"><span></span><span></span><span></span></span><span>ALaI</span>
+        </a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-navigation" data-nav-toggle>
+          <span class="sr-only">Abrir menú</span><span></span><span></span>
+        </button>
+        <nav id="site-navigation" class="site-nav" aria-label="Navegación principal" data-navigation>
+          <a href="index.html" aria-current="page">Libro</a>
+          <a href="people/index.html">Autores</a>
+          <a href="teaching/index.html">Clases</a>
+          <a href="news/index.html">Novedades</a>
+          <a class="button button--compact" href="people/index.html#contacto"
+            >Obtener el libro</a
+          >
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <section class="hero" aria-labelledby="hero-title">
+        <canvas id="neural-field" class="neural-field" aria-hidden="true"></canvas>
+        <div class="hero__grid" aria-hidden="true"></div>
+        <div class="hero__aurora hero__aurora--purple" aria-hidden="true"></div>
+        <div class="hero__aurora hero__aurora--orange" aria-hidden="true"></div>
+
+        <div class="shell hero__inner">
+          <div class="hero__copy reveal">
+            <p class="eyebrow"><span></span> Inteligencia artificial, sin humo</p>
+            <h1 id="hero-title">Artificializando<br /><span>la Inteligencia</span></h1>
+            <p class="hero__lede">
+              Una mirada rigurosa y cercana para comprender cómo aprende una máquina, desde los fundamentos hasta la IA generativa.
+            </p>
+
+            <div class="hero__actions">
+              <a class="button button--primary" href="people/index.html#contacto">
+                Obtener el libro
+                <svg aria-hidden="true"><use href="#icon-arrow"></use></svg>
+              </a>
+              <a class="button button--secondary" href="#contenido">
+                <svg aria-hidden="true"><use href="#icon-book"></use></svg>
+                Ver el índice
+              </a>
+            </div>
+
+            <ul class="hero__badges" aria-label="Características del libro">
+              <li>331 páginas</li>
+              <li>IA práctica</li>
+              <li>Deep Learning moderno</li>
+              <li>Actualizado para 2026</li>
+            </ul>
+          </div>
+
+          <div class="hero__visual reveal" data-parallax-book>
+            <div class="book-glow" aria-hidden="true"></div>
+            <picture>
+              <source srcset="assets/img/book-mockup-transparent.webp" type="image/webp" />
+              <img src="assets/img/cover.png" alt="Portada del libro Artificializando la Inteligencia" width="920" height="920" loading="eager" />
+            </picture>
+            <span class="orbit orbit--one" aria-hidden="true"></span>
+            <span class="orbit orbit--two" aria-hidden="true"></span>
+          </div>
+        </div>
+        <a class="scroll-cue" href="#contenido" aria-label="Explorar el contenido del libro"><span></span></a>
+      </section>
+
+      <section class="section section--why">
+        <div class="shell back-cover">
+          <div class="back-cover__heading reveal">
+            <p class="eyebrow">Por qué este libro</p>
+            <h2>Una guía para artificializar la inteligencia.</h2>
+          </div>
+          <div class="back-cover__copy reveal">
+            <p class="back-cover__lead">
+              La Inteligencia Artificial se ha convertido en un término ampliamente difundido, pasando de ser un concepto propio del ámbito
+              informático y académico a convertirse en un tema de discusión cotidiano en la ronda de mate.
+            </p>
+            <p>
+              Sin embargo, ¿qué significa “Inteligencia Artificial”? Algunos quizás poseen una idea bien formada; otros, tal vez, se enfrentan a una
+              diversidad de enfoques y aplicaciones que hacen difícil discernir qué camino tomar para satisfacer esa curiosidad por aprender.
+            </p>
+            <p>
+              En este libro el lector será guiado a través de los principales conceptos que estructuran el campo de la Inteligencia Artificial. El
+              recorrido abarca desde los enfoques clásicos y los algoritmos genéticos hasta los primeros modelos basados en el perceptrón,
+              incorporando nociones fundamentales de ciencia de datos, optimización y evaluación de modelos.
+            </p>
+            <p>
+              Sobre estas bases, se construye una introducción al Aprendizaje Automático y al Aprendizaje Profundo, transitando modelos como las redes
+              de Hopfield, la regla de Oja y los mapas autoorganizados de Kohonen, hacia arquitecturas más complejas, como las Redes Convolucionales,
+              los Autoencoders y las Redes Generativas Adversariales, hasta llegar a enfoques modernos como los Transformers.
+            </p>
+            <p>
+              Asimismo, veremos la aplicación de estos conceptos en contextos de la industria e invitaremos a reflexionar sobre los desafíos y
+              limitaciones que presentan hasta los modelos más complejos. De este modo, el lector podrá transitar el puente entre los fundamentos
+              teóricos y los sistemas que hoy definen el estado del arte, en un camino atravesado por una pregunta fundamental: ¿hasta dónde hemos
+              llegado en nuestra búsqueda por artificializar la inteligencia?
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="contenido" class="section section--intro">
+        <div class="shell section-heading reveal">
+          <div>
+            <p class="eyebrow">Dentro del libro</p>
+            <h2>De los fundamentos<br />al estado del arte.</h2>
+          </div>
+          <p>
+            Un recorrido progresivo para entender las ideas, la matemática y las decisiones de implementación que sostienen la inteligencia artificial
+            actual.
+          </p>
+        </div>
+
+        <div class="shell book-toc reveal">
+          <details class="toc-part">
+            <summary><span>I</span><strong>Los inicios</strong><span>Capítulos 1–2</span></summary>
+            <ol class="toc-list">
+              <li class="toc-entry toc-entry--chapter"><span>1 Introducción</span><span aria-label="Página 19">19</span></li>
+              <li class="toc-entry toc-entry--section"><span>1.1 ¿Qué es la inteligencia?</span><span aria-label="Página 19">19</span></li>
+              <li class="toc-entry toc-entry--section"><span>1.2 Los orígenes</span><span aria-label="Página 20">20</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>1.2.1 El Simbolismo</span><span aria-label="Página 21">21</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>1.2.2 Nos Vemos en Dartmouth</span><span aria-label="Página 21">21</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>1.2.3 El procesamiento del lenguaje</span><span aria-label="Página 23">23</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>1.2.4 GPS, General Problem Solver</span><span aria-label="Página 23">23</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>1.2.5 Informática en Acción</span><span aria-label="Página 24">24</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>1.2.6 El enfoque evolutivo</span><span aria-label="Página 24">24</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>1.2.7 Sistemas Expertos</span><span aria-label="Página 25">25</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>1.2.8 El abordaje Conexionista</span><span aria-label="Página 25">25</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>1.2.9 Aprendizaje Automático</span><span aria-label="Página 26">26</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>1.2.10 Aprendizaje Profundo</span><span aria-label="Página 27">27</span></li>
+              <li class="toc-entry toc-entry--subsection">
+                <span>1.2.11 La Inteligencia Artificial en la Argentina</span><span aria-label="Página 27">27</span>
+              </li>
+              <li class="toc-entry toc-entry--section"><span>1.3 Definición de Inteligencia</span><span aria-label="Página 29">29</span></li>
+              <li class="toc-entry toc-entry--chapter"><span>2 Conceptos Preliminares</span><span aria-label="Página 33">33</span></li>
+              <li class="toc-entry toc-entry--section"><span>2.1 Generales</span><span aria-label="Página 33">33</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>2.1.1 Matriz de datos</span><span aria-label="Página 33">33</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>2.1.2 Características</span><span aria-label="Página 34">34</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>2.1.3 Aprendizaje y Generalización</span><span aria-label="Página 34">34</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>2.1.4 Nomenclatura</span><span aria-label="Página 34">34</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>2.1.5 Métodos de aprendizaje</span><span aria-label="Página 35">35</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>2.1.6 Las cuatro tareas</span><span aria-label="Página 35">35</span></li>
+              <li class="toc-entry toc-entry--section"><span>2.2 Un pelín de Álgebra</span><span aria-label="Página 36">36</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>2.2.1 Combinación Lineal</span><span aria-label="Página 36">36</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>2.2.2 Proyección</span><span aria-label="Página 36">36</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>2.2.3 Plano</span><span aria-label="Página 36">36</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>2.2.4 Matriz Ortonormal</span><span aria-label="Página 37">37</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>2.2.5 Autovalores y Autovectores</span><span aria-label="Página 38">38</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>2.2.6 Regularización</span><span aria-label="Página 41">41</span></li>
+              <li class="toc-entry toc-entry--section"><span>2.3 Teoría de la Información</span><span aria-label="Página 42">42</span></li>
+              <li class="toc-entry toc-entry--section"><span>2.4 Quiero más</span><span aria-label="Página 47">47</span></li>
+            </ol>
+          </details>
+
+          <details class="toc-part">
+            <summary><span>II</span><strong>Algoritmos de búsqueda</strong><span>Capítulos 3–4</span></summary>
+            <ol class="toc-list">
+              <li class="toc-entry toc-entry--chapter"><span>3 Inteligencia Artificial Clásica</span><span aria-label="Página 51">51</span></li>
+              <li class="toc-entry toc-entry--section"><span>3.1 Agente</span><span aria-label="Página 51">51</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>3.1.1 Ambientes</span><span aria-label="Página 52">52</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>3.1.2 Conceptos Principales</span><span aria-label="Página 53">53</span></li>
+              <li class="toc-entry toc-entry--section"><span>3.2 La importancia de la búsqueda</span><span aria-label="Página 54">54</span></li>
+              <li class="toc-entry toc-entry--section"><span>3.3 Métodos de Búsqueda</span><span aria-label="Página 54">54</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>3.3.1 Eficiencia</span><span aria-label="Página 57">57</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>3.3.2 Estrategias de Búsqueda</span><span aria-label="Página 57">57</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>3.3.3 Representación del Problema</span><span aria-label="Página 57">57</span></li>
+              <li class="toc-entry toc-entry--section"><span>3.4 Métodos de Búsqueda Desinformados</span><span aria-label="Página 59">59</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>3.4.1 Breadth First Search</span><span aria-label="Página 60">60</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>3.4.2 Uniform Cost Search</span><span aria-label="Página 60">60</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>3.4.3 Depth First Search</span><span aria-label="Página 60">60</span></li>
+              <li class="toc-entry toc-entry--subsection">
+                <span>3.4.4 Estados repetidos y Backtracking</span><span aria-label="Página 61">61</span>
+              </li>
+              <li class="toc-entry toc-entry--section"><span>3.5 Métodos de Búsqueda Informados</span><span aria-label="Página 62">62</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>3.5.1 Local Greedy Search</span><span aria-label="Página 62">62</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>3.5.2 A*</span><span aria-label="Página 65">65</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>3.5.3 Iterative Deepening A*</span><span aria-label="Página 65">65</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>3.5.4 Heuristic Path Planning</span><span aria-label="Página 65">65</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>3.5.5 Ejemplo de juego: Sokoban</span><span aria-label="Página 66">66</span></li>
+              <li class="toc-entry toc-entry--section">
+                <span>3.6 Algoritmos de Mejoramiento Iterativo</span><span aria-label="Página 67">67</span>
+              </li>
+              <li class="toc-entry toc-entry--subsection"><span>3.6.1 Hill Climbing</span><span aria-label="Página 67">67</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>3.6.2 Simulated Annealing</span><span aria-label="Página 69">69</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>3.6.3 Beam Search</span><span aria-label="Página 70">70</span></li>
+              <li class="toc-entry toc-entry--chapter"><span>4 Algoritmos Genéticos</span><span aria-label="Página 71">71</span></li>
+              <li class="toc-entry toc-entry--section"><span>4.1 Definiciones Evolutivas</span><span aria-label="Página 71">71</span></li>
+              <li class="toc-entry toc-entry--section"><span>4.2 Crossover</span><span aria-label="Página 76">76</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>4.2.1 Cruce de un punto</span><span aria-label="Página 77">77</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>4.2.2 Cruce de dos puntos</span><span aria-label="Página 77">77</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>4.2.3 Cruce anular</span><span aria-label="Página 77">77</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>4.2.4 Cruce uniforme</span><span aria-label="Página 77">77</span></li>
+              <li class="toc-entry toc-entry--section"><span>4.3 Mutación</span><span aria-label="Página 77">77</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>4.3.1 Generando generaciones</span><span aria-label="Página 78">78</span></li>
+              <li class="toc-entry toc-entry--section"><span>4.4 Quiero más</span><span aria-label="Página 79">79</span></li>
+            </ol>
+          </details>
+
+          <details class="toc-part">
+            <summary><span>III</span><strong>Perceptrón</strong><span>Capítulos 5–8</span></summary>
+            <ol class="toc-list">
+              <li class="toc-entry toc-entry--chapter"><span>5 Optimización Matemática</span><span aria-label="Página 85">85</span></li>
+              <li class="toc-entry toc-entry--section"><span>5.1 La latita de Coca</span><span aria-label="Página 85">85</span></li>
+              <li class="toc-entry toc-entry--section"><span>5.2 El problema de optimización</span><span aria-label="Página 87">87</span></li>
+              <li class="toc-entry toc-entry--section"><span>5.3 El método simplex</span><span aria-label="Página 88">88</span></li>
+              <li class="toc-entry toc-entry--section">
+                <span>5.4 Optimización no lineal sin restricciones</span><span aria-label="Página 89">89</span>
+              </li>
+              <li class="toc-entry toc-entry--subsection"><span>5.4.1 Definiciones preliminares</span><span aria-label="Página 90">90</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>5.4.2 Gradiente Descendente</span><span aria-label="Página 93">93</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>5.4.3 Método de Newton</span><span aria-label="Página 94">94</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>5.4.4 Métodos Cuasi Newton</span><span aria-label="Página 94">94</span></li>
+              <li class="toc-entry toc-entry--subsection">
+                <span>5.4.5 Métodos de Direcciones Conjugadas</span><span aria-label="Página 95">95</span>
+              </li>
+              <li class="toc-entry toc-entry--subsection">
+                <span>5.4.6 Métodos de Gradientes Conjugados, 1952</span><span aria-label="Página 95">95</span>
+              </li>
+              <li class="toc-entry toc-entry--subsection"><span>5.4.7 El método de Powell 1964</span><span aria-label="Página 95">95</span></li>
+              <li class="toc-entry toc-entry--subsection">
+                <span>5.4.8 Gradiente Descendente Estocástico</span><span aria-label="Página 96">96</span>
+              </li>
+              <li class="toc-entry toc-entry--chapter"><span>6 El modelo de Neurona</span><span aria-label="Página 99">99</span></li>
+              <li class="toc-entry toc-entry--section"><span>6.1 La bioinspiración</span><span aria-label="Página 100">100</span></li>
+              <li class="toc-entry toc-entry--section"><span>6.2 Separabilidad lineal</span><span aria-label="Página 101">101</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>6.2.1 Aprendizaje Hebbiano</span><span aria-label="Página 105">105</span></li>
+              <li class="toc-entry toc-entry--subsection">
+                <span>6.2.2 Algoritmo del Perceptrón Simple</span><span aria-label="Página 107">107</span>
+              </li>
+              <li class="toc-entry toc-entry--subsection"><span>6.2.3 Perceptrón Lineal</span><span aria-label="Página 108">108</span></li>
+              <li class="toc-entry toc-entry--subsection">
+                <span>6.2.4 Aprendizaje en el Perceptrón Simple No Lineal</span><span aria-label="Página 111">111</span>
+              </li>
+              <li class="toc-entry toc-entry--chapter"><span>7 La era del Conexionismo</span><span aria-label="Página 115">115</span></li>
+              <li class="toc-entry toc-entry--section"><span>7.1 Perceptrón Multicapa</span><span aria-label="Página 115">115</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>7.1.1 Propagación hacia adelante</span><span aria-label="Página 117">117</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>7.1.2 Propagación hacia atrás</span><span aria-label="Página 119">119</span></li>
+              <li class="toc-entry toc-entry--section">
+                <span>7.2 Algoritmo del Perceptrón Multicapa</span><span aria-label="Página 123">123</span>
+              </li>
+              <li class="toc-entry toc-entry--subsection"><span>7.2.1 Aprendizaje Incremental</span><span aria-label="Página 125">125</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>7.2.2 Aprendizaje por lotes</span><span aria-label="Página 125">125</span></li>
+              <li class="toc-entry toc-entry--section"><span>7.3 Variantes de optimización</span><span aria-label="Página 126">126</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>7.3.1 Momentum</span><span aria-label="Página 126">126</span></li>
+              <li class="toc-entry toc-entry--subsection">
+                <span>7.3.2 Tasa de aprendizaje adaptativa</span><span aria-label="Página 126">126</span>
+              </li>
+              <li class="toc-entry toc-entry--subsection"><span>7.3.3 RMSProp</span><span aria-label="Página 127">127</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>7.3.4 Adam</span><span aria-label="Página 128">128</span></li>
+              <li class="toc-entry toc-entry--section">
+                <span>7.4 Arquitectura del Perceptrón Multicapa</span><span aria-label="Página 129">129</span>
+              </li>
+              <li class="toc-entry toc-entry--section">
+                <span>7.5 La promesa detrás de las redes neuronales</span><span aria-label="Página 130">130</span>
+              </li>
+              <li class="toc-entry toc-entry--chapter"><span>8 Métricas de Evaluación</span><span aria-label="Página 135">135</span></li>
+              <li class="toc-entry toc-entry--section">
+                <span>8.1 Identificar el patrón de manera correcta</span><span aria-label="Página 135">135</span>
+              </li>
+              <li class="toc-entry toc-entry--section"><span>8.2 Métricas estándar</span><span aria-label="Página 136">136</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>8.2.1 Matriz de Confusión</span><span aria-label="Página 136">136</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>8.2.2 Métricas</span><span aria-label="Página 138">138</span></li>
+              <li class="toc-entry toc-entry--subsection">
+                <span>8.2.3 Ajuste, subajuste y sobreajuste</span><span aria-label="Página 140">140</span>
+              </li>
+              <li class="toc-entry toc-entry--subsection"><span>8.2.4 Validación Cruzada</span><span aria-label="Página 141">141</span></li>
+            </ol>
+          </details>
+
+          <details class="toc-part">
+            <summary><span>IV</span><strong>Automatizando el Aprendizaje</strong><span>Capítulos 9–13</span></summary>
+            <ol class="toc-list">
+              <li class="toc-entry toc-entry--chapter"><span>9 Aprendizaje Automático</span><span aria-label="Página 145">145</span></li>
+              <li class="toc-entry toc-entry--section"><span>9.1 Redefiniendo Aprendizaje</span><span aria-label="Página 145">145</span></li>
+              <li class="toc-entry toc-entry--section"><span>9.2 Métodos de Aprendizaje</span><span aria-label="Página 146">146</span></li>
+              <li class="toc-entry toc-entry--section"><span>9.3 Pipeline de Machine Learning</span><span aria-label="Página 147">147</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>9.3.1 El problema Inverso</span><span aria-label="Página 149">149</span></li>
+              <li class="toc-entry toc-entry--section"><span>9.4 Quiero más</span><span aria-label="Página 151">151</span></li>
+              <li class="toc-entry toc-entry--chapter"><span>10 Transformaciones en los datos</span><span aria-label="Página 153">153</span></li>
+              <li class="toc-entry toc-entry--section"><span>10.1 Estructura interna de los datos</span><span aria-label="Página 153">153</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>10.1.1 Clustering y Agrupamientos</span><span aria-label="Página 155">155</span></li>
+              <li class="toc-entry toc-entry--section">
+                <span>10.2 Análisis de Componentes Principales</span><span aria-label="Página 156">156</span>
+              </li>
+              <li class="toc-entry toc-entry--subsection"><span>10.2.1 Preliminares</span><span aria-label="Página 157">157</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>10.2.2 Transformación PCA</span><span aria-label="Página 158">158</span></li>
+              <li class="toc-entry toc-entry--section"><span>10.3 Quiero más</span><span aria-label="Página 163">163</span></li>
+              <li class="toc-entry toc-entry--chapter"><span>11 Red de Kohonen</span><span aria-label="Página 165">165</span></li>
+              <li class="toc-entry toc-entry--section"><span>11.1 Mapa Autoorganizado</span><span aria-label="Página 165">165</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>11.1.1 Aprendizaje Competitivo</span><span aria-label="Página 166">166</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>11.1.2 Arquitectura</span><span aria-label="Página 166">166</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>11.1.3 Algoritmo</span><span aria-label="Página 168">168</span></li>
+              <li class="toc-entry toc-entry--chapter"><span>12 Red de Hopfield</span><span aria-label="Página 173">173</span></li>
+              <li class="toc-entry toc-entry--section"><span>12.1 Hopfield 1982</span><span aria-label="Página 174">174</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>12.1.1 Memoria Asociativa</span><span aria-label="Página 175">175</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>12.1.2 Estabilidad</span><span aria-label="Página 178">178</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>12.1.3 Convergencia</span><span aria-label="Página 179">179</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>12.1.4 Limitaciones</span><span aria-label="Página 180">180</span></li>
+              <li class="toc-entry toc-entry--chapter"><span>13 Modelo de Oja y Sanger</span><span aria-label="Página 181">181</span></li>
+              <li class="toc-entry toc-entry--section">
+                <span>13.1 La búsqueda del poder de síntesis</span><span aria-label="Página 181">181</span>
+              </li>
+              <li class="toc-entry toc-entry--section"><span>13.2 Red de Oja</span><span aria-label="Página 182">182</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>13.2.1 Implementación</span><span aria-label="Página 186">186</span></li>
+              <li class="toc-entry toc-entry--section"><span>13.3 Red de Sanger</span><span aria-label="Página 187">187</span></li>
+            </ol>
+          </details>
+
+          <details class="toc-part">
+            <summary><span>V</span><strong>Deep Learning</strong><span>Capítulos 14–19</span></summary>
+            <ol class="toc-list">
+              <li class="toc-entry toc-entry--chapter"><span>14 Deep Brain</span><span aria-label="Página 191">191</span></li>
+              <li class="toc-entry toc-entry--section"><span>14.1 Biomimesis neuronal</span><span aria-label="Página 191">191</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>14.1.1 Grasa inteligente</span><span aria-label="Página 192">192</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>14.1.2 Una neuro-computadora</span><span aria-label="Página 193">193</span></li>
+              <li class="toc-entry toc-entry--section"><span>14.2 La Neurona Recargada</span><span aria-label="Página 196">196</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>14.2.1 ¿Cómo dispara una neurona?</span><span aria-label="Página 196">196</span></li>
+              <li class="toc-entry toc-entry--subsection">
+                <span>14.2.2 Una Computadora Nanotecnológica</span><span aria-label="Página 197">197</span>
+              </li>
+              <li class="toc-entry toc-entry--subsection"><span>14.2.3 Conducción a Saltos</span><span aria-label="Página 199">199</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>14.2.4 Sinapsis</span><span aria-label="Página 200">200</span></li>
+              <li class="toc-entry toc-entry--chapter"><span>15 Aprendizaje Profundo</span><span aria-label="Página 203">203</span></li>
+              <li class="toc-entry toc-entry--section">
+                <span>15.1 Guía para el tío y la tía que pregunta</span><span aria-label="Página 204">204</span>
+              </li>
+              <li class="toc-entry toc-entry--section">
+                <span>15.2 Los cuatro pilares de Deep Learning</span><span aria-label="Página 206">206</span>
+              </li>
+              <li class="toc-entry toc-entry--subsection"><span>15.2.1 Profundidad</span><span aria-label="Página 206">206</span></li>
+              <li class="toc-entry toc-entry--subsection">
+                <span>15.2.2 Aprendizaje de la Representación</span><span aria-label="Página 209">209</span>
+              </li>
+              <li class="toc-entry toc-entry--subsection"><span>15.2.3 Datasets</span><span aria-label="Página 210">210</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>15.2.4 GPUs</span><span aria-label="Página 211">211</span></li>
+              <li class="toc-entry toc-entry--chapter"><span>16 Autoencoders</span><span aria-label="Página 215">215</span></li>
+              <li class="toc-entry toc-entry--section"><span>16.1 Autoasociadores</span><span aria-label="Página 215">215</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>16.1.1 Arquitectura</span><span aria-label="Página 215">215</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>16.1.2 Autoencoder Lineal</span><span aria-label="Página 217">217</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>16.1.3 Detección de Outliers</span><span aria-label="Página 220">220</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>16.1.4 Denoising Autoencoder</span><span aria-label="Página 221">221</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>16.1.5 Contractive Autoencoder</span><span aria-label="Página 222">222</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>16.1.6 Sparse Autoencoder</span><span aria-label="Página 222">222</span></li>
+              <li class="toc-entry toc-entry--section"><span>16.2 Autoencoder Generativo</span><span aria-label="Página 223">223</span></li>
+              <li class="toc-entry toc-entry--subsection">
+                <span>16.2.1 La estructura del espacio latente</span><span aria-label="Página 225">225</span>
+              </li>
+              <li class="toc-entry toc-entry--section"><span>16.3 Variational Autoencoder</span><span aria-label="Página 226">226</span></li>
+              <li class="toc-entry toc-entry--subsection">
+                <span>16.3.1 Redes Neuronales Estocásticas</span><span aria-label="Página 227">227</span>
+              </li>
+              <li class="toc-entry toc-entry--subsection"><span>16.3.2 Inferencia Variacional</span><span aria-label="Página 228">228</span></li>
+              <li class="toc-entry toc-entry--subsection">
+                <span>16.3.3 Optimizar el Autoencoder Variacional</span><span aria-label="Página 229">229</span>
+              </li>
+              <li class="toc-entry toc-entry--subsection"><span>16.3.4 Backpropagation en el VAE</span><span aria-label="Página 235">235</span></li>
+              <li class="toc-entry toc-entry--section"><span>16.4 Apéndice</span><span aria-label="Página 236">236</span></li>
+              <li class="toc-entry toc-entry--chapter"><span>17 Convolutional Neural Networks</span><span aria-label="Página 243">243</span></li>
+              <li class="toc-entry toc-entry--section"><span>17.1 La operación de Convolución</span><span aria-label="Página 244">244</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>17.1.1 Moving Average</span><span aria-label="Página 245">245</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>17.1.2 Padding</span><span aria-label="Página 245">245</span></li>
+              <li class="toc-entry toc-entry--section"><span>17.2 Convolución en Imágenes</span><span aria-label="Página 247">247</span></li>
+              <li class="toc-entry toc-entry--section"><span>17.3 Neocognitrón</span><span aria-label="Página 248">248</span></li>
+              <li class="toc-entry toc-entry--section"><span>17.4 La Operatoria Convolucional</span><span aria-label="Página 250">250</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>17.4.1 Capa Convolucional</span><span aria-label="Página 250">250</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>17.4.2 La capa de Pooling</span><span aria-label="Página 252">252</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>17.4.3 Full Layer y Softmax</span><span aria-label="Página 252">252</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>17.4.4 Backpropagation</span><span aria-label="Página 253">253</span></li>
+              <li class="toc-entry toc-entry--section"><span>17.5 ¿Por qué funcionan?</span><span aria-label="Página 255">255</span></li>
+              <li class="toc-entry toc-entry--section"><span>17.6 Inteligibilidad</span><span aria-label="Página 255">255</span></li>
+              <li class="toc-entry toc-entry--section"><span>17.7 Arquitecturas Reusables</span><span aria-label="Página 256">256</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>17.7.1 ResNet</span><span aria-label="Página 257">257</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>17.7.2 U-Net</span><span aria-label="Página 258">258</span></li>
+              <li class="toc-entry toc-entry--section"><span>17.8 Más allá de las imágenes</span><span aria-label="Página 259">259</span></li>
+              <li class="toc-entry toc-entry--section"><span>17.9 Quiero más</span><span aria-label="Página 259">259</span></li>
+              <li class="toc-entry toc-entry--chapter"><span>18 Generative Adversarial Networks</span><span aria-label="Página 261">261</span></li>
+              <li class="toc-entry toc-entry--section"><span>18.1 Generando gatitos</span><span aria-label="Página 261">261</span></li>
+              <li class="toc-entry toc-entry--section"><span>18.2 Juego MinMax</span><span aria-label="Página 264">264</span></li>
+              <li class="toc-entry toc-entry--section"><span>18.3 Colapso Modal</span><span aria-label="Página 265">265</span></li>
+              <li class="toc-entry toc-entry--section"><span>18.4 El gran simulador</span><span aria-label="Página 266">266</span></li>
+              <li class="toc-entry toc-entry--chapter"><span>19 Transformers</span><span aria-label="Página 267">267</span></li>
+              <li class="toc-entry toc-entry--section"><span>19.1 Las Redes Recurrentes</span><span aria-label="Página 268">268</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>19.1.1 Long Short-Term Memory</span><span aria-label="Página 269">269</span></li>
+              <li class="toc-entry toc-entry--section"><span>19.2 Arquitectura de un Transformer</span><span aria-label="Página 270">270</span></li>
+              <li class="toc-entry toc-entry--section"><span>19.3 Preprocesamiento</span><span aria-label="Página 273">273</span></li>
+              <li class="toc-entry toc-entry--section"><span>19.4 Attention is all you need</span><span aria-label="Página 275">275</span></li>
+              <li class="toc-entry toc-entry--subsection">
+                <span>19.4.1 Una tabla de acceso indexado continua</span><span aria-label="Página 275">275</span>
+              </li>
+              <li class="toc-entry toc-entry--subsection"><span>19.4.2 Kernel Smoothing</span><span aria-label="Página 277">277</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>19.4.3 Atención Cognitiva</span><span aria-label="Página 278">278</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>19.4.4 Cálculo de Atención</span><span aria-label="Página 278">278</span></li>
+              <li class="toc-entry toc-entry--section"><span>19.5 Entrenamiento</span><span aria-label="Página 280">280</span></li>
+              <li class="toc-entry toc-entry--section"><span>19.6 Large Language Models</span><span aria-label="Página 281">281</span></li>
+              <li class="toc-entry toc-entry--section"><span>19.7 Quiero más</span><span aria-label="Página 284">284</span></li>
+            </ol>
+          </details>
+
+          <details class="toc-part">
+            <summary><span>VI</span><strong>Pragmatismo Profesional</strong><span>Capítulos 20–21</span></summary>
+            <ol class="toc-list">
+              <li class="toc-entry toc-entry--chapter"><span>20 Del Dato a la Industria</span><span aria-label="Página 287">287</span></li>
+              <li class="toc-entry toc-entry--section"><span>20.1 El Análisis Cuantitativo</span><span aria-label="Página 287">287</span></li>
+              <li class="toc-entry toc-entry--section"><span>20.2 ETLs y EDAs</span><span aria-label="Página 291">291</span></li>
+              <li class="toc-entry toc-entry--section"><span>20.3 Falacias de la Ciencia de Datos</span><span aria-label="Página 292">292</span></li>
+              <li class="toc-entry toc-entry--section">
+                <span>20.4 Inteligencia Artificial y la Frontera Digital</span><span aria-label="Página 294">294</span>
+              </li>
+              <li class="toc-entry toc-entry--chapter"><span>21 Guía para el apurado</span><span aria-label="Página 297">297</span></li>
+              <li class="toc-entry toc-entry--section"><span>21.1 Condimentos de una Red Neuronal</span><span aria-label="Página 297">297</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>21.1.1 Transformación de los datos</span><span aria-label="Página 298">298</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>21.1.2 Balanceo de clases</span><span aria-label="Página 299">299</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>21.1.3 Funciones de Costo</span><span aria-label="Página 299">299</span></li>
+              <li class="toc-entry toc-entry--subsection"><span>21.1.4 Funciones de Activación</span><span aria-label="Página 299">299</span></li>
+              <li class="toc-entry toc-entry--subsection">
+                <span>21.1.5 ¿Cómo cocino un panqueque? con una Red Neuronal</span><span aria-label="Página 299">299</span>
+              </li>
+              <li class="toc-entry toc-entry--section"><span>21.2 Infraestructura de Software</span><span aria-label="Página 302">302</span></li>
+              <li class="toc-entry toc-entry--section"><span>21.3 Quiero más</span><span aria-label="Página 306">306</span></li>
+              <li class="toc-entry toc-entry--chapter"><span>Index</span><span aria-label="Página 331">331</span></li>
+            </ol>
+          </details>
+        </div>
+      </section>
+
+      <section class="final-cta">
+        <div class="final-cta__aurora" aria-hidden="true"></div>
+        <div class="shell final-cta__inner reveal">
+          <p class="eyebrow">El próximo capítulo empieza acá</p>
+          <h2>Entender la IA cambia<br />cómo imaginamos el futuro.</h2>
+          <p>Una base sólida para quienes quieren construir, enseñar o decidir con inteligencia artificial.</p>
+          <div class="hero__actions">
+            <a class="button button--light" href="people/index.html#contacto"
+              >Obtener el libro <svg><use href="#icon-arrow"></use></svg
+            ></a>
+            <a class="button button--ghost" href="people/index.html#contacto">Contactanos</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="shell site-footer__inner">
+        <div>
+          <a class="brand" href="index.html"
+            ><span class="brand__mark" aria-hidden="true"><span></span><span></span><span></span></span><span>ALaI</span></a
+          >
+          <p>Inteligencia artificial explicada con rigor, criterio y lenguaje cercano.</p>
+        </div>
+        <div class="site-footer__links">
+          <a href="#contenido">Ver el índice</a>
+          <a href="people/index.html#contacto">Contactanos</a>
+        </div>
+        <p class="site-footer__legal">© 2026 Artificializando la Inteligencia.</p>
+      </div>
+    </footer>
+    <script src="assets/js/site.js" defer></script>
+  </body>
+</html>
