@@ -53,6 +53,61 @@
     });
   }
 
+  const carousel = document.querySelector("[data-carousel]");
+  if (carousel) {
+    const slides = [...carousel.querySelectorAll("[data-carousel-slide]")];
+    const dots = [...carousel.querySelectorAll("[data-carousel-dot]")];
+    const previousButton = document.querySelector("[data-carousel-previous]");
+    const nextButton = document.querySelector("[data-carousel-next]");
+    const status = carousel.querySelector("[data-carousel-status]");
+    let activeIndex = 0;
+    let autoplayTimer = 0;
+
+    const showSlide = (index) => {
+      activeIndex = (index + slides.length) % slides.length;
+      slides.forEach((slide, slideIndex) => {
+        slide.hidden = slideIndex !== activeIndex;
+      });
+      dots.forEach((dot, dotIndex) => {
+        dot.setAttribute("aria-current", String(dotIndex === activeIndex));
+      });
+      if (status) status.textContent = `${activeIndex + 1} / ${slides.length}`;
+    };
+
+    const stopAutoplay = () => window.clearTimeout(autoplayTimer);
+    const startAutoplay = () => {
+      stopAutoplay();
+      if (reducedMotion.matches || document.hidden || slides.length < 2) return;
+      autoplayTimer = window.setTimeout(() => {
+        showSlide(activeIndex + 1);
+        startAutoplay();
+      }, 6000);
+    };
+    const selectSlide = (index) => {
+      showSlide(index);
+      startAutoplay();
+    };
+
+    previousButton?.addEventListener("click", () => selectSlide(activeIndex - 1));
+    nextButton?.addEventListener("click", () => selectSlide(activeIndex + 1));
+    dots.forEach((dot, dotIndex) => dot.addEventListener("click", () => selectSlide(dotIndex)));
+    carousel.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowLeft") selectSlide(activeIndex - 1);
+      if (event.key === "ArrowRight") selectSlide(activeIndex + 1);
+    });
+    carousel.addEventListener("mouseenter", stopAutoplay);
+    carousel.addEventListener("mouseleave", startAutoplay);
+    carousel.addEventListener("focusin", stopAutoplay);
+    carousel.addEventListener("focusout", (event) => {
+      if (!carousel.contains(event.relatedTarget)) startAutoplay();
+    });
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) stopAutoplay();
+      else startAutoplay();
+    });
+    startAutoplay();
+  }
+
   const canvas = document.querySelector("#neural-field");
   if (!canvas || reducedMotion.matches) return;
 
@@ -135,4 +190,3 @@
   visibilityObserver.observe(canvas);
   new ResizeObserver(resize).observe(canvas);
 })();
-
