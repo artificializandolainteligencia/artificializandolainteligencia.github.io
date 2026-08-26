@@ -120,6 +120,10 @@
                 <svg aria-hidden="true"><use href="#icon-book"></use></svg>
                 Ver el índice
               </a>
+              <a class="button button--secondary button--citation" href="#citar">
+                <svg aria-hidden="true"><use href="#icon-code"></use></svg>
+                Cómo citar
+              </a>
             </div>
 
             <ul class="hero__badges" aria-label="Características del libro">
@@ -502,6 +506,37 @@
         </div>
       </section>
 
+      <section id="citar" class="section citation-section" aria-labelledby="citation-title">
+        <div class="shell citation-layout">
+          <div class="citation-heading reveal">
+            <p class="eyebrow">Referencia bibliográfica</p>
+            <h2 id="citation-title">Cómo citar este libro.</h2>
+            <p>Copiá esta referencia en formato BibTeX para incluirla en tus trabajos, artículos o materiales académicos.</p>
+          </div>
+          <div class="citation-card reveal">
+            <div class="citation-card__header">
+              <span>BibTeX</span>
+              <button class="citation-copy" type="button" data-copy-citation aria-describedby="citation-status">
+                <svg aria-hidden="true" viewBox="0 0 24 24">
+                  <rect x="9" y="9" width="11" height="11" rx="2"></rect>
+                  <path d="M15 9V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h3"></path>
+                </svg>
+                <span data-copy-label>Copiar referencia</span>
+              </button>
+            </div>
+            <pre class="citation-code"><code data-citation-text>@book{alai2026,
+  title={Artificializando La Inteligencia},
+  author={Ramele, Rodrigo and Pierri, Alan and Fuster, Marina and Piñeiro, Eugenia Sol},
+  year={2026},
+  edition={1st},
+  note={\url{https://artificializandolainteligencia.github.io/}},
+  publisher={Editorial Dunken, Buenos Aires, Argentina}
+}</code></pre>
+            <p id="citation-status" class="sr-only" role="status" aria-live="polite"></p>
+          </div>
+        </div>
+      </section>
+
       <section class="final-cta">
         <div class="final-cta__aurora" aria-hidden="true"></div>
         <div class="shell final-cta__inner reveal">
@@ -528,6 +563,7 @@
         </div>
         <div class="site-footer__links">
           <a href="#contenido">Ver el índice</a>
+          <a href="#citar">Cómo citar</a>
           <a href="people/index.html#contacto">Contactanos</a>
         </div>
         <p class="site-footer__legal">© 2026 Artificializando la Inteligencia.</p>

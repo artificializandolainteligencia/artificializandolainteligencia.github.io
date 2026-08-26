@@ -108,6 +108,46 @@
     startAutoplay();
   }
 
+  const citationButton = document.querySelector("[data-copy-citation]");
+  const citationText = document.querySelector("[data-citation-text]");
+  const citationLabel = citationButton?.querySelector("[data-copy-label]");
+  const citationStatus = document.querySelector("#citation-status");
+  let citationResetTimer = 0;
+
+  const copyCitation = async () => {
+    if (!citationButton || !citationText || !citationLabel || !citationStatus) return;
+
+    try {
+      const text = citationText.textContent;
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(text);
+      } else {
+        const selection = window.getSelection();
+        const range = document.createRange();
+        range.selectNodeContents(citationText);
+        selection?.removeAllRanges();
+        selection?.addRange(range);
+        const copied = document.execCommand("copy");
+        selection?.removeAllRanges();
+        if (!copied) throw new Error("Copy command failed");
+      }
+
+      window.clearTimeout(citationResetTimer);
+      citationButton.classList.add("is-copied");
+      citationLabel.textContent = "Referencia copiada";
+      citationStatus.textContent = "Referencia BibTeX copiada al portapapeles.";
+      citationResetTimer = window.setTimeout(() => {
+        citationButton.classList.remove("is-copied");
+        citationLabel.textContent = "Copiar referencia";
+      }, 2600);
+    } catch (error) {
+      citationStatus.textContent = "No se pudo copiar la referencia. Seleccioná el texto y copialo manualmente.";
+      citationLabel.textContent = "Seleccioná el texto";
+    }
+  };
+
+  citationButton?.addEventListener("click", copyCitation);
+
   const canvas = document.querySelector("#neural-field");
   if (!canvas || reducedMotion.matches) return;
 
