@@ -1421,6 +1421,91 @@ h3 {
   max-width: 980px;
 }
 
+.event-feature {
+  display: grid;
+  grid-template-columns: minmax(300px, 0.82fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 52px;
+  margin-bottom: 104px;
+  padding: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  border-radius: 12px;
+  background:
+    radial-gradient(circle at 0 0, rgba(245, 158, 11, 0.1), transparent 34%),
+    radial-gradient(circle at 100% 100%, rgba(139, 92, 246, 0.14), transparent 42%),
+    linear-gradient(145deg, rgba(25, 25, 34, 0.96), rgba(13, 13, 19, 0.92));
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.24);
+}
+
+.event-feature__visual {
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  box-shadow: 0 20px 44px rgba(0, 0, 0, 0.34);
+}
+
+.event-feature__visual img {
+  width: 100%;
+  height: auto;
+}
+
+.event-feature__copy {
+  padding-right: 18px;
+}
+
+.event-feature__copy .eyebrow {
+  margin-bottom: 14px;
+}
+
+.prose .event-feature__copy h2 {
+  margin: 0 0 20px;
+  font-size: 36px;
+}
+
+.event-feature__copy > p:not(.eyebrow) {
+  margin-bottom: 30px;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.event-feature__details {
+  display: grid;
+  gap: 22px;
+  margin: 0;
+}
+
+.event-feature__details div {
+  padding-top: 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.event-feature__details dt {
+  margin-bottom: 6px;
+  color: var(--orange-light);
+  font-size: 11px;
+  font-weight: 750;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.event-feature__details dd {
+  margin: 0;
+  color: var(--text);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.event-feature__details address {
+  font-style: normal;
+}
+
+.prose .event-feature__registration {
+  margin-top: 30px;
+  color: #fff;
+  text-decoration: none;
+}
+
 .social-posts {
   max-width: 800px;
   margin: 0 auto 92px;
@@ -1862,6 +1947,11 @@ h3 {
   .final-cta h2 {
     font-size: 50px;
   }
+
+  .event-feature {
+    grid-template-columns: minmax(260px, 0.72fr) minmax(0, 1fr);
+    gap: 32px;
+  }
 }
 
 @media (max-width: 600px) {
@@ -2097,6 +2187,26 @@ h3 {
   .news-item {
     grid-template-columns: 1fr;
     gap: 10px;
+  }
+
+  .event-feature {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    margin-bottom: 76px;
+    padding: 14px 14px 28px;
+  }
+
+  .event-feature__visual {
+    width: min(100%, 430px);
+    margin-inline: auto;
+  }
+
+  .event-feature__copy {
+    padding-inline: 8px;
+  }
+
+  .prose .event-feature__copy h2 {
+    font-size: 29px;
   }
 
   .social-posts {
