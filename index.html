@@ -511,11 +511,36 @@
           <div class="citation-heading reveal">
             <p class="eyebrow">Referencia bibliográfica</p>
             <h2 id="citation-title">Cómo citar este libro.</h2>
-            <p>Copiá esta referencia en formato BibTeX para incluirla en tus trabajos, artículos o materiales académicos.</p>
+            <p>Consultá la referencia como BibTeX o texto plano para incluirla en tus trabajos, artículos o materiales académicos.</p>
           </div>
           <div class="citation-card reveal">
             <div class="citation-card__header">
-              <span>BibTeX</span>
+              <div class="citation-tabs" role="tablist" aria-label="Formato de la referencia">
+                <button
+                  id="citation-tab-bibtex"
+                  class="citation-tab"
+                  type="button"
+                  role="tab"
+                  aria-selected="true"
+                  aria-controls="citation-panel-bibtex"
+                  tabindex="0"
+                  data-citation-tab
+                >
+                  BibTeX
+                </button>
+                <button
+                  id="citation-tab-text"
+                  class="citation-tab"
+                  type="button"
+                  role="tab"
+                  aria-selected="false"
+                  aria-controls="citation-panel-text"
+                  tabindex="-1"
+                  data-citation-tab
+                >
+                  Texto plano
+                </button>
+              </div>
               <button class="citation-copy" type="button" data-copy-citation aria-describedby="citation-status">
                 <svg aria-hidden="true" viewBox="0 0 24 24">
                   <rect x="9" y="9" width="11" height="11" rx="2"></rect>
@@ -524,7 +549,8 @@
                 <span data-copy-label>Copiar referencia</span>
               </button>
             </div>
-            <pre class="citation-code"><code data-citation-text>@book{alai2026,
+            <div id="citation-panel-bibtex" role="tabpanel" aria-labelledby="citation-tab-bibtex" data-citation-panel>
+              <pre class="citation-code"><code data-citation-text data-citation-format="BibTeX">@book{alai2026,
   title={Artificializando La Inteligencia},
   author={Ramele, Rodrigo and Pierri, Alan and Fuster, Marina and Piñeiro, Eugenia Sol},
   year={2026},
@@ -532,6 +558,13 @@
   note={\url{https://artificializandolainteligencia.github.io/}},
   publisher={Editorial Dunken, Buenos Aires, Argentina}
 }</code></pre>
+            </div>
+            <div id="citation-panel-text" role="tabpanel" aria-labelledby="citation-tab-text" data-citation-panel hidden>
+              <p class="citation-text" data-citation-text data-citation-format="texto plano">
+                Ramele, Rodrigo; Pierri, Alan; Fuster, Marina; y Piñeiro, Eugenia Sol. <cite>Artificializando la Inteligencia</cite>. 1.ª ed. Buenos
+                Aires: Editorial Dunken, 2026. https://artificializandolainteligencia.github.io/
+              </p>
+            </div>
             <p id="citation-status" class="sr-only" role="status" aria-live="polite"></p>
           </div>
         </div>

@@ -109,16 +109,51 @@
   }
 
   const citationButton = document.querySelector("[data-copy-citation]");
-  const citationText = document.querySelector("[data-citation-text]");
+  const citationTabs = [...document.querySelectorAll("[data-citation-tab]")];
+  const citationPanels = [...document.querySelectorAll("[data-citation-panel]")];
   const citationLabel = citationButton?.querySelector("[data-copy-label]");
   const citationStatus = document.querySelector("#citation-status");
   let citationResetTimer = 0;
 
+  const resetCitationButton = () => {
+    window.clearTimeout(citationResetTimer);
+    citationButton?.classList.remove("is-copied");
+    if (citationLabel) citationLabel.textContent = "Copiar referencia";
+  };
+
+  const selectCitationTab = (selectedTab, moveFocus = false) => {
+    citationTabs.forEach((tab) => {
+      const isSelected = tab === selectedTab;
+      tab.setAttribute("aria-selected", String(isSelected));
+      tab.setAttribute("tabindex", isSelected ? "0" : "-1");
+    });
+    citationPanels.forEach((panel) => {
+      panel.hidden = panel.id !== selectedTab.getAttribute("aria-controls");
+    });
+    resetCitationButton();
+    if (moveFocus) selectedTab.focus();
+  };
+
+  citationTabs.forEach((tab, tabIndex) => {
+    tab.addEventListener("click", () => selectCitationTab(tab));
+    tab.addEventListener("keydown", (event) => {
+      let nextIndex = null;
+      if (event.key === "ArrowRight") nextIndex = (tabIndex + 1) % citationTabs.length;
+      if (event.key === "ArrowLeft") nextIndex = (tabIndex - 1 + citationTabs.length) % citationTabs.length;
+      if (event.key === "Home") nextIndex = 0;
+      if (event.key === "End") nextIndex = citationTabs.length - 1;
+      if (nextIndex === null) return;
+      event.preventDefault();
+      selectCitationTab(citationTabs[nextIndex], true);
+    });
+  });
+
   const copyCitation = async () => {
+    const citationText = citationPanels.find((panel) => !panel.hidden)?.querySelector("[data-citation-text]");
     if (!citationButton || !citationText || !citationLabel || !citationStatus) return;
 
     try {
-      const text = citationText.textContent;
+      const text = citationText.textContent.trim().replace(/\s+/g, citationText.closest("pre") ? "$&" : " ");
       if (navigator.clipboard && window.isSecureContext) {
         await navigator.clipboard.writeText(text);
       } else {
@@ -135,10 +170,9 @@
       window.clearTimeout(citationResetTimer);
       citationButton.classList.add("is-copied");
       citationLabel.textContent = "Referencia copiada";
-      citationStatus.textContent = "Referencia BibTeX copiada al portapapeles.";
+      citationStatus.textContent = `Referencia en ${citationText.dataset.citationFormat} copiada al portapapeles.`;
       citationResetTimer = window.setTimeout(() => {
-        citationButton.classList.remove("is-copied");
-        citationLabel.textContent = "Copiar referencia";
+        resetCitationButton();
       }, 2600);
     } catch (error) {
       citationStatus.textContent = "No se pudo copiar la referencia. Seleccioná el texto y copialo manualmente.";
